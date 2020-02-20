@@ -7,6 +7,10 @@
     </h1>
     <p class="text-center green-text">
       Enter your combination to see if you've won
+      <br/>
+      <small>
+        <em>You will be sent to a "You Won" page</em>
+      </small>
     </p>
     <div id="lock-plate">
       <span></span><span></span><span></span><span></span>
@@ -20,9 +24,6 @@
         <div class="lock-dial" id="dial-five"><ul data-combo-num="0"><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>
       </div>
     </div>
-    <p class="text-center green-text">
-      You will be sent to a "You Won" page<br/>if you have the winning combination!
-    </p>
   </div>
 </template>
 
@@ -113,7 +114,12 @@ export default {
     });
   },
   computed: {},
-  methods: {}
+  methods: {
+    updateMe() {
+      console.log('called');
+      this.$forceUpdate();
+    }
+  }
 }
 </script>
 
