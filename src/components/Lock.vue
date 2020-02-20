@@ -12,7 +12,7 @@
                   <h1>Congratulations!</h1>
                   <h3>You are the winner!</h3>
                   <p>Good luck with all your lotto tickets!</p>
-                  <button id="reset-button">Reset Lock!</button>
+                  <button @click="reset()" id="reset-button">Reset Lock!</button>
                 </div>
               </div>
               <div class="container">
@@ -44,24 +44,24 @@
                   </div>
                   <div class="keypad">
                     <div class="keypad--row">
-                      <div class="keypad--button" data-value="1">1</div>
-                      <div class="keypad--button" data-value="2">2</div>
-                      <div class="keypad--button" data-value="3">3</div>
+                      <div class="keypad--button" @click="clickedNumber(1)">1</div>
+                      <div class="keypad--button" @click="clickedNumber(2)">2</div>
+                      <div class="keypad--button" @click="clickedNumber(3)">3</div>
                     </div>
                     <div class="keypad--row">
-                      <div class="keypad--button" data-value="4">4</div>
-                      <div class="keypad--button" data-value="5">5</div>
-                      <div class="keypad--button" data-value="6">6</div>
+                      <div class="keypad--button" @click="clickedNumber(4)">4</div>
+                      <div class="keypad--button" @click="clickedNumber(5)">5</div>
+                      <div class="keypad--button" @click="clickedNumber(6)">6</div>
                     </div>
                     <div class="keypad--row">
-                      <div class="keypad--button" data-value="7">7</div>
-                      <div class="keypad--button" data-value="8">8</div>
-                      <div class="keypad--button" data-value="9">9</div>
+                      <div class="keypad--button" @click="clickedNumber(7)">7</div>
+                      <div class="keypad--button" @click="clickedNumber(8)">8</div>
+                      <div class="keypad--button" @click="clickedNumber(9)">9</div>
                     </div>
                     <div class="keypad--row">
-                      <div class="keypad--button keyboard--button__back-arrow"><i class="material-icons">arrow_back</i></div>
-                      <div class="keypad--button" data-value="0">0</div>
-                      <div class="keypad--button keyboard--button__x">x</div>
+                      <div @click="clickedBackArrow()" class="keypad--button keyboard--button__back-arrow"><i class="material-icons">arrow_back</i></div>
+                      <div class="keypad--button" @click="clickedNumber(0)">0</div>
+                      <div @click="clickedX()" class="keypad--button keyboard--button__x">x</div>
                     </div>
                   </div>
                 </div>
@@ -79,27 +79,86 @@
 export default {
   props: {},
   data: () => ({
-    myPinArray: []
+    myPinArray: [],
+    disableInput: false,
+    correctPin: "0000",
   }),
   mounted: function () {
-    let touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
-    
-    const self = this;
-    const correctPin = "0000";
-    let disableInput = false;
-    let _pinArray = [];
-    self.myPinArray = _pinArray;
-
-    function reset() {
-      closeLock().then(() => {
-        disableInput = false;
-        _pinArray = [];
-        self.myPinArray = _pinArray;
-        bindPinToDisplay(_pinArray);
-      });
+    this.initLayout();
+  },
+  computed: {
+    displayPin() {
+      return (this.myPinArray.length) ? this.myPinArray.join(' ') : '- - - -';
     }
-
-    function closeLock() {
+  },
+  methods: {
+    errorShake() {
+      return Promise.resolve();
+    },
+    initLayout() {
+      const containerHeight = document.querySelector(".container").offsetHeight;
+      const keypadHeight = document.querySelector(".pin-display").offsetHeight;
+      document.querySelector(".pin-info").style.height = `${containerHeight -
+        keypadHeight +
+        1}px`;
+    },
+    reset() {
+      this.closeLock().then(() => {
+        this.disableInput = false;
+        this.myPinArray = [];
+        this.bindPinToDisplay([]);
+      });
+    },
+    clickedX() {
+      if (this.disableInput) {
+        return;
+      }
+      this.myPinArray = [];
+      this.bindPinToDisplay([]);
+    },
+    clickedBackArrow() {
+      if (this.disableInput) {
+        return;
+      }
+      this.myPinArray.pop();
+      this.bindPinToDisplay(this.myPinArray);
+    },
+    clickedNumber(value) {
+      if (this.disableInput) {
+        return;
+      }
+      if (this.myPinArray.length < 4) {
+        this.myPinArray.push(value);
+        this.bindPinToDisplay(this.myPinArray);
+        if (this.myPinArray.length === 4) {
+          this.evaluatePin(this.myPinArray);
+        }
+      }
+    },
+    evaluatePin(pinArray) {
+      const enteredPin = pinArray.join("");
+      if (enteredPin === this.correctPin) {
+        this.disableInput = true;
+        setTimeout(() => {
+          this.bindPinToDisplay(pinArray, "success");
+          setTimeout(() => {
+            this.openLock();
+          }, 500);
+        }, 250);
+        console.log("correct PIN");
+      } else {
+        this.disableInput = true;
+        setTimeout(() => {
+          this.bindPinToDisplay(pinArray, "error");
+          setTimeout(() => {
+            this.myPinArray = [];
+            this.bindPinToDisplay([]);
+            this.disableInput = false;
+          }, 350);
+        }, 250);
+      }
+    },
+    closeLock() {
       const topSection = document.querySelector(".pin-info");
       const bottomSection = document.querySelector(".pin-display");
 
@@ -119,8 +178,8 @@ export default {
       ];
 
       return Promise.all(promises);
-    }
-    function openLock() {
+    },
+    openLock() {
       const topSection = document.querySelector(".pin-info");
       const bottomSection = document.querySelector(".pin-display");
 
@@ -140,12 +199,8 @@ export default {
       ];
 
       return Promise.all(promises);
-    }
-
-    function errorShake() {
-      return Promise.resolve();
-    }
-    function bindPinToDisplay(pinArray, pinStatus) {
+    },
+    bindPinToDisplay(pinArray, pinStatus) {
       document.querySelectorAll(".pin-circle").forEach((el, index) => {
         if (pinStatus === "success") {
           el.classList.add("success");
@@ -166,96 +221,6 @@ export default {
         document.querySelector(".confirmation-dots").classList.remove("error");
       }
     }
-
-    function evaluatePin(pinArray) {
-      const enteredPin = pinArray.join("");
-      if (enteredPin === correctPin) {
-        disableInput = true;
-        setTimeout(() => {
-          bindPinToDisplay(pinArray, "success");
-          setTimeout(() => {
-            openLock();
-          }, 500);
-        }, 250);
-        console.log("correct PIN");
-      } else {
-        disableInput = true;
-        setTimeout(() => {
-          bindPinToDisplay(pinArray, "error");
-          setTimeout(() => {
-            _pinArray = [];
-            self.myPinArray = _pinArray;
-            bindPinToDisplay(_pinArray);
-            disableInput = false;
-          }, 350);
-        }, 250);
-      }
-    }
-
-    function initKeypad() {
-      document.querySelectorAll(".keypad--button[data-value]").forEach(el => {
-        el.addEventListener(touchEvent, evt => {
-          if (disableInput) {
-            return;
-          }
-          const value = evt.target.attributes["data-value"].value;
-          if (_pinArray.length < 4) {
-            _pinArray.push(value);
-            bindPinToDisplay(_pinArray);
-            if (_pinArray.length === 4) {
-              evaluatePin(_pinArray);
-            }
-          }
-        });
-      });
-
-      document
-        .querySelector(".keyboard--button__back-arrow")
-        .addEventListener(touchEvent, () => {
-          if (disableInput) {
-            return;
-          }
-          _pinArray.pop();
-          bindPinToDisplay(_pinArray);
-        });
-
-      document
-        .querySelector(".keyboard--button__x")
-        .addEventListener(touchEvent, () => {
-          if (disableInput) {
-            return;
-          }
-          _pinArray = [];
-          self.myPinArray = _pinArray;
-          bindPinToDisplay(_pinArray);
-        });
-      
-      document.querySelector('#reset-button').addEventListener(touchEvent, () => {
-        reset();
-      })
-    }
-
-    function initLayout() {
-      const containerHeight = document.querySelector(".container").offsetHeight;
-      const keypadHeight = document.querySelector(".pin-display").offsetHeight;
-      document.querySelector(".pin-info").style.height = `${containerHeight -
-        keypadHeight +
-        1}px`;
-    }
-
-    function init() {
-      initKeypad();
-      initLayout();
-    }
-
-    init();
-  },
-  computed: {
-    displayPin() {
-      return (this.myPinArray.length) ? this.myPinArray.join(' ') : '- - - -';
-    }
-  },
-  methods: {
   }
 }
 </script>
