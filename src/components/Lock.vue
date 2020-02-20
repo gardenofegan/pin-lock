@@ -44,24 +44,24 @@
                   </div>
                   <div class="keypad">
                     <div class="keypad--row">
-                      <div class="keypad--button" @click="clickedNumber(1)">1</div>
-                      <div class="keypad--button" @click="clickedNumber(2)">2</div>
-                      <div class="keypad--button" @click="clickedNumber(3)">3</div>
+                      <div class="keypad--button" @click.native="clickedNumber(1)">1</div>
+                      <div class="keypad--button" @click.native="clickedNumber(2)">2</div>
+                      <div class="keypad--button" @click.native="clickedNumber(3)">3</div>
                     </div>
                     <div class="keypad--row">
-                      <div class="keypad--button" @click="clickedNumber(4)">4</div>
-                      <div class="keypad--button" @click="clickedNumber(5)">5</div>
-                      <div class="keypad--button" @click="clickedNumber(6)">6</div>
+                      <div class="keypad--button" @click.native="clickedNumber(4)">4</div>
+                      <div class="keypad--button" @click.native="clickedNumber(5)">5</div>
+                      <div class="keypad--button" @click.native="clickedNumber(6)">6</div>
                     </div>
                     <div class="keypad--row">
-                      <div class="keypad--button" @click="clickedNumber(7)">7</div>
-                      <div class="keypad--button" @click="clickedNumber(8)">8</div>
-                      <div class="keypad--button" @click="clickedNumber(9)">9</div>
+                      <div class="keypad--button" @click.native="clickedNumber(7)">7</div>
+                      <div class="keypad--button" @click.native="clickedNumber(8)">8</div>
+                      <div class="keypad--button" @click.native="clickedNumber(9)">9</div>
                     </div>
                     <div class="keypad--row">
-                      <div @click="clickedBackArrow()" class="keypad--button keyboard--button__back-arrow"><i class="material-icons">arrow_back</i></div>
-                      <div class="keypad--button" @click="clickedNumber(0)">0</div>
-                      <div @click="clickedX()" class="keypad--button keyboard--button__x">x</div>
+                      <div @click.native="clickedBackArrow()" class="keypad--button keyboard--button__back-arrow"><i class="material-icons">arrow_back</i></div>
+                      <div class="keypad--button" @click.native="clickedNumber(0)">0</div>
+                      <div @click.native="clickedX()" class="keypad--button keyboard--button__x">x</div>
                     </div>
                   </div>
                 </div>
