@@ -12,7 +12,7 @@
                   <h1>Congratulations!</h1>
                   <h3>You are the winner!</h3>
                   <p>Good luck with all your lotto tickets!</p>
-                  <button @touchstart.prevent="reset()" @mousedown="reset()" id="reset-button">Reset Lock!</button>
+                  <button @touchstart="reset()" @mousedown="reset()" id="reset-button">Reset Lock!</button>
                 </div>
               </div>
               <div class="container">
@@ -44,24 +44,24 @@
                   </div>
                   <div class="keypad">
                     <div class="keypad--row">
-                      <div class="keypad--button" @touchstart.prevent="clickedNumber(1)" @mousedown="clickedNumber(1)">1</div>
-                      <div class="keypad--button" @touchstart.prevent="clickedNumber(2)" @mousedown="clickedNumber(2)">2</div>
-                      <div class="keypad--button" @touchstart.prevent="clickedNumber(3)" @mousedown="clickedNumber(3)">3</div>
+                      <div class="keypad--button" @touchstart="clickedNumber(1)" @mousedown="clickedNumber(1)">1</div>
+                      <div class="keypad--button" @touchstart="clickedNumber(2)" @mousedown="clickedNumber(2)">2</div>
+                      <div class="keypad--button" @touchstart="clickedNumber(3)" @mousedown="clickedNumber(3)">3</div>
                     </div>
                     <div class="keypad--row">
-                      <div class="keypad--button" @touchstart.prevent="clickedNumber(4)" @mousedown="clickedNumber(4)">4</div>
-                      <div class="keypad--button" @touchstart.prevent="clickedNumber(5)" @mousedown="clickedNumber(5)">5</div>
-                      <div class="keypad--button" @touchstart.prevent="clickedNumber(6)" @mousedown="clickedNumber(6)">6</div>
+                      <div class="keypad--button" @touchstart="clickedNumber(4)" @mousedown="clickedNumber(4)">4</div>
+                      <div class="keypad--button" @touchstart="clickedNumber(5)" @mousedown="clickedNumber(5)">5</div>
+                      <div class="keypad--button" @touchstart="clickedNumber(6)" @mousedown="clickedNumber(6)">6</div>
                     </div>
                     <div class="keypad--row">
-                      <div class="keypad--button" @touchstart.prevent="clickedNumber(7)" @mousedown="clickedNumber(7)">7</div>
-                      <div class="keypad--button" @touchstart.prevent="clickedNumber(8)" @mousedown="clickedNumber(8)">8</div>
-                      <div class="keypad--button" @touchstart.prevent="clickedNumber(9)" @mousedown="clickedNumber(9)">9</div>
+                      <div class="keypad--button" @touchstart="clickedNumber(7)" @mousedown="clickedNumber(7)">7</div>
+                      <div class="keypad--button" @touchstart="clickedNumber(8)" @mousedown="clickedNumber(8)">8</div>
+                      <div class="keypad--button" @touchstart="clickedNumber(9)" @mousedown="clickedNumber(9)">9</div>
                     </div>
                     <div class="keypad--row">
-                      <div @touchstart.prevent="clickedBackArrow()" @mousedown="clickedBackArrow()" class="keypad--button keyboard--button__back-arrow"><i class="material-icons">arrow_back</i></div>
-                      <div class="keypad--button" @touchstart.prevent="clickedNumber(0)" @mousedown="clickedNumber(0)">0</div>
-                      <div @touchstart.prevent="clickedX()" @mousedown="clickedX()" class="keypad--button keyboard--button__x">x</div>
+                      <div @touchstart="clickedBackArrow()" @mousedown="clickedBackArrow()" class="keypad--button keyboard--button__back-arrow"><i class="material-icons">arrow_back</i></div>
+                      <div class="keypad--button" @touchstart="clickedNumber(0)" @mousedown="clickedNumber(0)">0</div>
+                      <div @touchstart="clickedX()" @mousedown="clickedX()" class="keypad--button keyboard--button__x">x</div>
                     </div>
                   </div>
                 </div>
