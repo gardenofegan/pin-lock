@@ -44,10 +44,9 @@ export default {}
 
   h1 {
     position: relative;
-    font-family: 'Chewy', cursive;
     font-size: 60px;
     margin: 50px 0px 0px 620px;
-    color: #d67f2f;
+    color: #3C7113;
   }
 
   .box {

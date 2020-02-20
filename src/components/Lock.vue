@@ -1,15 +1,28 @@
 <template>
-  <div id="lock-plate">
-    <span></span><span></span><span></span><span></span>
-    <div class="bar"></div>
-    <div id="lock-wrapper">
-      <div class="welcome-message">WINNER!</div>
-      <div class="lock-dial" id="dial-one"><ul data-combo-num="0"><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>
-      <div class="lock-dial" id="dial-two"><ul data-combo-num="0"><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>
-      <div class="lock-dial" id="dial-three"><ul data-combo-num="0"><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>
-      <div class="lock-dial" id="dial-four"><ul data-combo-num="0"><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>
-      <div class="lock-dial" id="dial-five"><ul data-combo-num="0"><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>
+  <div>
+    <h1 class="text-center dark-green-text">
+      <img src="@/assets/logo.png" height="32" width="32" />
+      Lucky Lottery
+      <img src="@/assets/logo.png" height="32" width="32" />
+    </h1>
+    <p class="text-center green-text">
+      Enter your combination to see if you've won
+    </p>
+    <div id="lock-plate">
+      <span></span><span></span><span></span><span></span>
+      <div class="bar"></div>
+      <div id="lock-wrapper">
+        <div class="welcome-message">WINNER!</div>
+        <div class="lock-dial" id="dial-one"><ul data-combo-num="0"><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>
+        <div class="lock-dial" id="dial-two"><ul data-combo-num="0"><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>
+        <div class="lock-dial" id="dial-three"><ul data-combo-num="0"><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>
+        <div class="lock-dial" id="dial-four"><ul data-combo-num="0"><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>
+        <div class="lock-dial" id="dial-five"><ul data-combo-num="0"><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>
+      </div>
     </div>
+    <p class="text-center green-text">
+      You will be sent to a "You Won" page<br/>if you have the winning combination!
+    </p>
   </div>
 </template>
 
@@ -106,6 +119,14 @@ export default {
 
 <style>
   @import url(https://fonts.googleapis.com/css?family=Libre+Baskerville:700);
+
+  .dark-green-text {
+    color: #3C7113;
+  }
+  
+  .green-text {
+    color: #214B00;
+  }
 
   body{
     font-family: 'Libre Baskerville', serif;
@@ -232,5 +253,9 @@ export default {
   #lock-wrapper.unlocked .lock-dial ul{
     color: green;
     text-shadow: 0 0 5px #3f3;
+  }
+
+  .text-center {
+    text-align: center;
   }
 </style>
