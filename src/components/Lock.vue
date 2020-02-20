@@ -1,70 +1,74 @@
 <template>
   <div>
-    <div class="device">
-      <div class="device-bezel">
-        <div class="device-viewport">
-          <!-- Begin custom content -->
-          <div class="content">
-            <img src="../assets/irish.jpg" />
-            <div class="body-content">
-              <h1>Congratulations!</h1>
-              <h3>You are the winner!</h3>
-              <p>Good luck with all your lotto tickets!</p>
-              <button id="reset-button">Reset Lock!</button>
+    <div onclick="void(0);" style="height: 100%; -webkit-tap-highlight-color: transparent;">
+      <div style="height: 100%; -webkit-tap-highlight-color: initial;">
+        <div class="device">
+          <div class="device-bezel">
+            <div class="device-viewport">
+              <!-- Begin custom content -->
+              <div class="content">
+                <img src="../assets/irish.jpg" />
+                <div class="body-content">
+                  <h1>Congratulations!</h1>
+                  <h3>You are the winner!</h3>
+                  <p>Good luck with all your lotto tickets!</p>
+                  <button id="reset-button">Reset Lock!</button>
+                </div>
+              </div>
+              <div class="container">
+                <div class="pin-info">
+                  <h1 class="page-title">
+                    Enter Your<br/>
+                    <img src="../assets/logo.png" height="24" width="24" /> Lucky Lottery <img src="../assets/logo.png" height="24" width="24" /> <br/>
+                    Code
+                  </h1>
+                </div>
+                <div class="pin-display">
+                  <div class="circle-lock--container">
+                    <div class="circle-lock">
+                      <i class="material-icons lock-icon">lock</i>
+                    </div>
+                  </div>
+                  <div class="confirmation-dots">
+                    <svg>
+                      <g>
+                        <circle class="pin-circle" cx="10" cy="10" r="8"></circle>
+                        <circle class="pin-circle" cx="50" cy="10" r="8"></circle>
+                        <circle class="pin-circle" cx="90" cy="10" r="8"></circle>
+                        <circle class="pin-circle" cx="130" cy="10" r="8"></circle>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="pin">
+                    {{ displayPin }}
+                  </div>
+                  <div class="keypad">
+                    <div class="keypad--row">
+                      <div class="keypad--button" data-value="1">1</div>
+                      <div class="keypad--button" data-value="2">2</div>
+                      <div class="keypad--button" data-value="3">3</div>
+                    </div>
+                    <div class="keypad--row">
+                      <div class="keypad--button" data-value="4">4</div>
+                      <div class="keypad--button" data-value="5">5</div>
+                      <div class="keypad--button" data-value="6">6</div>
+                    </div>
+                    <div class="keypad--row">
+                      <div class="keypad--button" data-value="7">7</div>
+                      <div class="keypad--button" data-value="8">8</div>
+                      <div class="keypad--button" data-value="9">9</div>
+                    </div>
+                    <div class="keypad--row">
+                      <div class="keypad--button keyboard--button__back-arrow"><i class="material-icons">arrow_back</i></div>
+                      <div class="keypad--button" data-value="0">0</div>
+                      <div class="keypad--button keyboard--button__x">x</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end custom content -->
             </div>
           </div>
-          <div class="container">
-            <div class="pin-info">
-              <h1 class="page-title">
-                Enter Your<br/>
-                <img src="../assets/logo.png" height="24" width="24" /> Lucky Lottery <img src="../assets/logo.png" height="24" width="24" /> <br/>
-                Code
-              </h1>
-            </div>
-            <div class="pin-display">
-              <div class="circle-lock--container">
-                <div class="circle-lock">
-                  <i class="material-icons lock-icon">lock</i>
-                </div>
-              </div>
-              <div class="confirmation-dots">
-                <svg>
-                  <g>
-                    <circle class="pin-circle" cx="10" cy="10" r="8"></circle>
-                    <circle class="pin-circle" cx="50" cy="10" r="8"></circle>
-                    <circle class="pin-circle" cx="90" cy="10" r="8"></circle>
-                    <circle class="pin-circle" cx="130" cy="10" r="8"></circle>
-                  </g>
-                </svg>
-              </div>
-              <div class="pin">
-                {{ displayPin }}
-              </div>
-              <div class="keypad">
-                <div class="keypad--row">
-                  <div class="keypad--button" data-value="1">1</div>
-                  <div class="keypad--button" data-value="2">2</div>
-                  <div class="keypad--button" data-value="3">3</div>
-                </div>
-                <div class="keypad--row">
-                  <div class="keypad--button" data-value="4">4</div>
-                  <div class="keypad--button" data-value="5">5</div>
-                  <div class="keypad--button" data-value="6">6</div>
-                </div>
-                <div class="keypad--row">
-                  <div class="keypad--button" data-value="7">7</div>
-                  <div class="keypad--button" data-value="8">8</div>
-                  <div class="keypad--button" data-value="9">9</div>
-                </div>
-                <div class="keypad--row">
-                  <div class="keypad--button keyboard--button__back-arrow"><i class="material-icons">arrow_back</i></div>
-                  <div class="keypad--button" data-value="0">0</div>
-                  <div class="keypad--button keyboard--button__x">x</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- end custom content -->
         </div>
       </div>
     </div>
@@ -484,6 +488,7 @@ body {
   line-height: 32px;
   text-align: center;
   font-weight: 700;
+  padding: 20px 0;
 }
 
 .pin-info {
