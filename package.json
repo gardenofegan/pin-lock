@@ -1,5 +1,5 @@
 {
-  "name": "combination-lock",
+  "name": "pin-lock",
   "version": "0.1.0",
   "private": true,
   "scripts": {

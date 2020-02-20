@@ -1,8 +1,8 @@
 # Combination Lock
 
-A Basic Vue app to be a virtual combination lock.
+A Basic Vue app to be a virtual pin lock.
 
-Most code pulled from [Functional Combination Lock](https://codepen.io/nuxrif/pen/gDGib)
+Most code pulled from [Keypad Codepen](https://codepen.io/Cpidar/pen/bGNeKXp)
 
 ## Project setup
 ```

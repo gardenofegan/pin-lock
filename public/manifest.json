@@ -1,6 +1,6 @@
 {
-  "name": "Combination Lock",
-  "short_name": "Combination Lock",
+  "name": "Pin Lock",
+  "short_name": "Pin Lock",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
