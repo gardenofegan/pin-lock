@@ -12,7 +12,7 @@
                   <h1>Congratulations!</h1>
                   <h3>You are the winner!</h3>
                   <p>Good luck with all your lotto tickets!</p>
-                  <button @touchstart="reset()" @mousedown="reset()" id="reset-button">Reset Lock!</button>
+                  <button @touchstart.prevent="reset()" @mousedown="reset()" id="reset-button">Reset Lock!</button>
                 </div>
               </div>
               <div class="container">
@@ -29,13 +29,13 @@
                       <i class="material-icons lock-icon">lock</i>
                     </div>
                   </div>
-                  <div class="confirmation-dots">
+                  <div :class="confirmationDotsClass">
                     <svg>
                       <g>
-                        <circle class="pin-circle" cx="10" cy="10" r="8"></circle>
-                        <circle class="pin-circle" cx="50" cy="10" r="8"></circle>
-                        <circle class="pin-circle" cx="90" cy="10" r="8"></circle>
-                        <circle class="pin-circle" cx="130" cy="10" r="8"></circle>
+                        <circle :class="dotOneClass" cx="10" cy="10" r="8"></circle>
+                        <circle :class="dotTwoClass" cx="50" cy="10" r="8"></circle>
+                        <circle :class="dotThreeClass" cx="90" cy="10" r="8"></circle>
+                        <circle :class="dotFourClass" cx="130" cy="10" r="8"></circle>
                       </g>
                     </svg>
                   </div>
@@ -44,24 +44,24 @@
                   </div>
                   <div class="keypad">
                     <div class="keypad--row">
-                      <div class="keypad--button" @touchstart="clickedNumber(1)" @mousedown="clickedNumber(1)">1</div>
-                      <div class="keypad--button" @touchstart="clickedNumber(2)" @mousedown="clickedNumber(2)">2</div>
-                      <div class="keypad--button" @touchstart="clickedNumber(3)" @mousedown="clickedNumber(3)">3</div>
+                      <div class="keypad--button" @touchstart.prevent="clickedNumber(1)" @mousedown="clickedNumber(1)">1</div>
+                      <div class="keypad--button" @touchstart.prevent="clickedNumber(2)" @mousedown="clickedNumber(2)">2</div>
+                      <div class="keypad--button" @touchstart.prevent="clickedNumber(3)" @mousedown="clickedNumber(3)">3</div>
                     </div>
                     <div class="keypad--row">
-                      <div class="keypad--button" @touchstart="clickedNumber(4)" @mousedown="clickedNumber(4)">4</div>
-                      <div class="keypad--button" @touchstart="clickedNumber(5)" @mousedown="clickedNumber(5)">5</div>
-                      <div class="keypad--button" @touchstart="clickedNumber(6)" @mousedown="clickedNumber(6)">6</div>
+                      <div class="keypad--button" @touchstart.prevent="clickedNumber(4)" @mousedown="clickedNumber(4)">4</div>
+                      <div class="keypad--button" @touchstart.prevent="clickedNumber(5)" @mousedown="clickedNumber(5)">5</div>
+                      <div class="keypad--button" @touchstart.prevent="clickedNumber(6)" @mousedown="clickedNumber(6)">6</div>
                     </div>
                     <div class="keypad--row">
-                      <div class="keypad--button" @touchstart="clickedNumber(7)" @mousedown="clickedNumber(7)">7</div>
-                      <div class="keypad--button" @touchstart="clickedNumber(8)" @mousedown="clickedNumber(8)">8</div>
-                      <div class="keypad--button" @touchstart="clickedNumber(9)" @mousedown="clickedNumber(9)">9</div>
+                      <div class="keypad--button" @touchstart.prevent="clickedNumber(7)" @mousedown="clickedNumber(7)">7</div>
+                      <div class="keypad--button" @touchstart.prevent="clickedNumber(8)" @mousedown="clickedNumber(8)">8</div>
+                      <div class="keypad--button" @touchstart.prevent="clickedNumber(9)" @mousedown="clickedNumber(9)">9</div>
                     </div>
                     <div class="keypad--row">
-                      <div @touchstart="clickedBackArrow()" @mousedown="clickedBackArrow()" class="keypad--button keyboard--button__back-arrow"><i class="material-icons">arrow_back</i></div>
-                      <div class="keypad--button" @touchstart="clickedNumber(0)" @mousedown="clickedNumber(0)">0</div>
-                      <div @touchstart="clickedX()" @mousedown="clickedX()" class="keypad--button keyboard--button__x">x</div>
+                      <div @touchstart.prevent="clickedBackArrow()" @mousedown="clickedBackArrow()" class="keypad--button keyboard--button__back-arrow"><i class="material-icons">arrow_back</i></div>
+                      <div class="keypad--button" @touchstart.prevent="clickedNumber(0)" @mousedown="clickedNumber(0)">0</div>
+                      <div @touchstart.prevent="clickedX()" @mousedown="clickedX()" class="keypad--button keyboard--button__x">x</div>
                     </div>
                   </div>
                 </div>
@@ -82,6 +82,11 @@ export default {
     myPinArray: [],
     disableInput: false,
     correctPin: "0000",
+    dotOneClass: "pin-circle",
+    dotTwoClass: "pin-circle",
+    dotThreeClass: "pin-circle",
+    dotFourClass: "pin-circle",
+    confirmationDotsClass: "confirmation-dots",
   }),
   mounted: function () {
     this.initLayout();
@@ -201,24 +206,44 @@ export default {
       return Promise.all(promises);
     },
     bindPinToDisplay(pinArray, pinStatus) {
-      document.querySelectorAll(".pin-circle").forEach((el, index) => {
-        if (pinStatus === "success") {
-          el.classList.add("success");
-        } else if (pinStatus === "error") {
-          el.classList.add("error");
-        } else if (index > pinArray.length - 1) {
-          el.classList.remove("entered");
-          el.classList.remove("success");
-          el.classList.remove("error");
-        } else {
-          el.classList.add("entered");
-        }
-      });
+      this.confirmationDotsClass = "confirmation-dots";
+      this.dotOneClass = "pin-circle";
+      this.dotTwoClass = "pin-circle";
+      this.dotThreeClass = "pin-circle";
+      this.dotFourClass = "pin-circle";
 
       if (pinStatus === "error") {
-        document.querySelector(".confirmation-dots").classList.add("error");
-      } else {
-        document.querySelector(".confirmation-dots").classList.remove("error");
+        this.confirmationDotsClass = "confirmation-dots error";
+        this.dotOneClass = "pin-circle error";
+        this.dotTwoClass = "pin-circle error";
+        this.dotThreeClass = "pin-circle error";
+        this.dotFourClass = "pin-circle error";
+        return;
+      }
+
+      if (pinStatus === "success") {
+        this.confirmationDotsClass = "confirmation-dots success";
+        this.dotOneClass = "pin-circle success";
+        this.dotTwoClass = "pin-circle success";
+        this.dotThreeClass = "pin-circle success";
+        this.dotFourClass = "pin-circle success";
+        return;
+      }
+
+      if (pinArray.length > 0) {
+        this.dotOneClass = "pin-circle entered";
+      }
+
+      if (pinArray.length > 1) {
+        this.dotTwoClass = "pin-circle entered";
+      }
+
+      if (pinArray.length > 2) {
+        this.dotThreeClass = "pin-circle entered";
+      }
+
+      if (pinArray.length > 3) {
+        this.dotFourClass = "pin-circle entered";
       }
     }
   }
