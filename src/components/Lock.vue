@@ -44,24 +44,24 @@
                   </div>
                   <div class="keypad">
                     <div class="keypad--row">
-                      <div class="keypad--button" data-value="1">1</div>
-                      <div class="keypad--button" data-value="2">2</div>
-                      <div class="keypad--button" data-value="3">3</div>
+                      <a class="keypad--button" data-value="1">1</a>
+                      <a class="keypad--button" data-value="2">2</a>
+                      <a class="keypad--button" data-value="3">3</a>
                     </div>
                     <div class="keypad--row">
-                      <div class="keypad--button" data-value="4">4</div>
-                      <div class="keypad--button" data-value="5">5</div>
-                      <div class="keypad--button" data-value="6">6</div>
+                      <a class="keypad--button" data-value="4">4</a>
+                      <a class="keypad--button" data-value="5">5</a>
+                      <a class="keypad--button" data-value="6">6</a>
                     </div>
                     <div class="keypad--row">
-                      <div class="keypad--button" data-value="7">7</div>
-                      <div class="keypad--button" data-value="8">8</div>
-                      <div class="keypad--button" data-value="9">9</div>
+                      <a class="keypad--button" data-value="7">7</a>
+                      <a class="keypad--button" data-value="8">8</a>
+                      <a class="keypad--button" data-value="9">9</a>
                     </div>
                     <div class="keypad--row">
-                      <div class="keypad--button keyboard--button__back-arrow"><i class="material-icons">arrow_back</i></div>
-                      <div class="keypad--button" data-value="0">0</div>
-                      <div class="keypad--button keyboard--button__x">x</div>
+                      <a class="keypad--button keyboard--button__back-arrow"><i class="material-icons">arrow_back</i></a>
+                      <a class="keypad--button" data-value="0">0</a>
+                      <a class="keypad--button keyboard--button__x">x</a>
                     </div>
                   </div>
                 </div>
@@ -192,7 +192,7 @@ export default {
 
     function initKeypad() {
       document.querySelectorAll(".keypad--button[data-value]").forEach(el => {
-        el.addEventListener("touchstart", evt => {
+        el.addEventListener("click", evt => {
           if (disableInput) {
             return;
           }
@@ -209,7 +209,7 @@ export default {
 
       document
         .querySelector(".keyboard--button__back-arrow")
-        .addEventListener("touchstart", () => {
+        .addEventListener("click", () => {
           if (disableInput) {
             return;
           }
@@ -219,7 +219,7 @@ export default {
 
       document
         .querySelector(".keyboard--button__x")
-        .addEventListener("touchstart", () => {
+        .addEventListener("click", () => {
           if (disableInput) {
             return;
           }
@@ -228,7 +228,7 @@ export default {
           bindPinToDisplay(_pinArray);
         });
       
-      document.querySelector('#reset-button').addEventListener('touchstart', () => {
+      document.querySelector('#reset-button').addEventListener('click', () => {
         reset();
       })
     }
