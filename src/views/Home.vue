@@ -1,15 +1,15 @@
 <template>
   <div>
-    <Schedule />
+    <Lock />
   </div>
 </template>
 
 <script>
-import Schedule from '../components/Schedule'
+import Lock from '../components/Lock'
 
 export default {
   components: {
-    Schedule
+    Lock
   }
 }
 </script>

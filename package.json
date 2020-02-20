@@ -1,5 +1,5 @@
 {
-  "name": "homeschool-schedule-cincy",
+  "name": "combination-lock",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "jquery": "^3.4.1",
     "lodash": "^4.17.11",
+    "node-sass": "^4.13.1",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
@@ -31,6 +33,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
+    "sass-loader": "^8.0.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "vue-cli-plugin-vuetify": "^0.5.0",

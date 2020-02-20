@@ -14,6 +14,6 @@ git add -A
 git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:gardenofegan/ghc-2019-cincinnati-schedule.git master:gh-pages
+git push -f git@github.com:gardenofegan/combination-lock.git master:gh-pages
 
 cd -

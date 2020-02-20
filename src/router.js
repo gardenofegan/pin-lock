@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Favorites from './views/Favorites.vue'
+import Winner from './views/Winner.vue'
 
 Vue.use(Router)
 
@@ -15,9 +15,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/favorites',
-      name: 'favorites',
-      component: Favorites
+      path: '/winner',
+      name: 'winner',
+      component: Winner
     }
   ]
 })

@@ -1,6 +1,8 @@
-# GHC 2019 Cincinnati Schedule
+# Combination Lock
 
-A Basic Vue app to set your desired schedule of courses to go to for the 2019 GHC convention in Cincinnati
+A Basic Vue app to be a virtual combination lock.
+
+Most code pulled from [Functional Combination Lock](https://codepen.io/nuxrif/pen/gDGib)
 
 ## Project setup
 ```
