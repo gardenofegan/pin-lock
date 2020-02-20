@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-center dark-green-text">
+    <h1 class="text-center dark-green-text padding-top-20">
       <img src="@/assets/logo.png" height="32" width="32" />
       Lucky Lottery
       <img src="@/assets/logo.png" height="32" width="32" />
@@ -126,6 +126,10 @@ export default {
 <style>
   @import url(https://fonts.googleapis.com/css?family=Libre+Baskerville:700);
 
+  .padding-top-20 {
+    padding-top: 40px;
+  }
+  
   .dark-green-text {
     color: #3C7113;
   }
