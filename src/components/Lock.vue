@@ -192,7 +192,7 @@ export default {
 
     function initKeypad() {
       document.querySelectorAll(".keypad--button[data-value]").forEach(el => {
-        el.addEventListener("click", evt => {
+        el.addEventListener("touchend", evt => {
           if (disableInput) {
             return;
           }
@@ -209,7 +209,7 @@ export default {
 
       document
         .querySelector(".keyboard--button__back-arrow")
-        .addEventListener("click", () => {
+        .addEventListener("touchend", () => {
           if (disableInput) {
             return;
           }
@@ -219,7 +219,7 @@ export default {
 
       document
         .querySelector(".keyboard--button__x")
-        .addEventListener("click", () => {
+        .addEventListener("touchend", () => {
           if (disableInput) {
             return;
           }
@@ -228,7 +228,7 @@ export default {
           bindPinToDisplay(_pinArray);
         });
       
-      document.querySelector('#reset-button').addEventListener('click', () => {
+      document.querySelector('#reset-button').addEventListener('touchend', () => {
         reset();
       })
     }
