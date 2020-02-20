@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="writing">
-      <h1>Congratulations! You Won!</h1>
+      <h1>You Won!</h1>
     </div>
     <div class="box">
       <div class="circle">

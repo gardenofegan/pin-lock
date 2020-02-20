@@ -21,7 +21,7 @@ export default {
   mounted: function () {
     const self = this;
     var comboArray = [0, 0, 0, 0, 0];
-    var combination = [1, 0, 0, 0, 0];
+    var combination = [1, 0, 0, 0, 1];
     
     var gridIncrement = $( ".lock-dial ul" ).css('line-height').replace('px', '')/2;
     var numNums = $( ".lock-dial:eq(0) ul li" ).length;
@@ -85,11 +85,11 @@ export default {
           $('.lock-dial').each(function(){
             var $this = $(this);
             $this.find('ul').delay(400).css('color', '#0f0').fadeOut(function(){
+              $('.welcome-message').fadeIn();
               $this.animate({
                 marginTop: 150
               }, function(){
                 $this.fadeOut(function(){
-                  $('.welcome-message').fadeIn();
                   self.$router.push('winner');
                 });
               });
@@ -192,7 +192,7 @@ export default {
     left: 50%;
     height: 90px;
     width: 400px;
-    margin-top: -45px;
+    margin-top: -40px;
     margin-left: -200px;
     font-size: 70px;
     font-weight: bold;
