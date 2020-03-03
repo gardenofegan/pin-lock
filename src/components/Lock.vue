@@ -81,7 +81,7 @@ export default {
   data: () => ({
     myPinArray: [],
     disableInput: false,
-    correctPin: "0000",
+    correctPin: "2113",
     dotOneClass: "pin-circle",
     dotTwoClass: "pin-circle",
     dotThreeClass: "pin-circle",
